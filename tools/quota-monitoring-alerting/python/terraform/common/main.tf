@@ -186,6 +186,7 @@ resource "null_resource" "replace_project_id_in_config" {
 #...............................................................................
 resource "google_bigquery_dataset" "quota" {
   dataset_id = local.config.export["bigquery"]["dataset"]
+  location   = var.region
 
   depends_on = [module.project_services,
     resource.google_organization_iam_member.sa_org_iam,
